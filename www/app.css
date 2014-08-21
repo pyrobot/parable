@@ -1,0 +1,19 @@
+body {
+	background-color: black;
+}
+
+.gridster-item {
+	background-color: white;
+}
+
+.close-icon {
+	color: blue;
+	transition: .8s;
+	cursor: pointer;
+	float: right;
+	margin: 5px;
+}
+
+.close-icon:hover {
+	color: red;
+}

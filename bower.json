@@ -1,0 +1,19 @@
+{
+  "name": "parable",
+  "version": "0.0.0",
+  "authors": [
+    "Justin <justin.elden@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.1.0",
+    "angular-gridster": "~0.9.16"
+  }
+}

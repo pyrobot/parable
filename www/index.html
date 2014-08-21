@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Parable Dashboard</title>
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css" />
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+  	<script src="bower_components/javascript-detect-element-resize/jquery.resize.js"></script>
+  	<script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
+  	<link rel="stylesheet" href="app.css">
+  	<link rel="stylesheet" href="bower_components/jquery-ui/themes/ui-darkness/jquery-ui.min.css">
+  	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  	<script src="app.js"></script>
+</head>
+<body ng-controller="pageCtrl">
+	<div gridster="gridsterOptions">
+        <ul id="containment-wrapper">
+            <li gridster-item="item" ng-repeat="item in standardItems">
+            	<i class="fa fa-trash-o close-icon" ng-click="removeItem(item)"></i>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
