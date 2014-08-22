@@ -1,19 +1,165 @@
-body {
+html, body {
+	height: 100%;
 	background-color: black;
+	overflow: hidden;	
 }
 
-.gridster-item {
+.gridster .gridster-item {
 	background-color: white;
+	border-radius: 4px;
+	/* Rectangle 3: */
+	background-image: -o-linear-gradient(-89deg, #2E2E2E 2%, #121212 100%);
+	background-image: -moz-linear-gradient(-89deg, #2E2E2E 2%, #121212 100%);
+	background-image: -ms-linear-gradient(-89deg, #2E2E2E 2%, #121212 100%);
+	background-image: linear-gradient(-179deg, #2E2E2E 2%, #121212 100%);
+	/* Sketch doesnt export pattern fills at this point */
+	-moz-box-shadow:    4px 4px 0px 0px rgba(0,0,0,0.20);
+	box-shadow:         4px 4px 0px 0px rgba(0,0,0,0.20);
+	cursor: -webkit-grab;
+
+	transition: opacity .3s, left .3s, top .3s, width .3s, height .3s, transform .3s, box-shadow .3s !important;
+
+}
+
+.gridster .gridster-item.gridster-item-deleting {
+	transition: none !important;
+	z-index: 4;
+}
+
+.gridster-item:hover {
+	/* Sketch doesnt export pattern fills at this point */
+/*	-moz-box-shadow:    0px 0px 5px 2px #50E3C2, inset 0px 3px 0px 0px rgba(0,0,0,0.50);
+	box-shadow:         0px 0px 5px 2px #50E3C2, inset 0px 3px 0px 0px rgba(0,0,0,0.50);*/
+}
+
+.gridster-item.gridster-item-moving {
+	transition: opacity .0s, left .0s, top .0s, width .0s, height .0s, transform .3s !important;
+}
+
+.gridster-item.gridster-item-moving:not(.ui-resizable-resizing) {
+	-moz-box-shadow:    4px 4px 10px 5px rgba(0,0,0,0.20);
+	box-shadow:         4px 4px 10px 5px rgba(0,0,0,0.20);
+	transform: scale(1.02);
+}
+
+.gridster-item:hover header > a {
+	/*color: #50E3C2 !important;*/
+}
+
+.gridster-item.ui-draggable-dragging header > a {
+	color: #9F9F9F !important;
 }
 
 .close-icon {
-	color: blue;
 	transition: .8s;
 	cursor: pointer;
 	float: right;
-	margin: 5px;
+	background: #F83F56;
+	-moz-box-shadow:    2px 5px 0px 0px rgba(0,0,0,0.30);
+	box-shadow:         2px 5px 0px 0px rgba(0,0,0,0.30);
+	border-radius: 10px;
+	width: 11px;
+	padding: 2px;
+	font-size: 12px;
+	margin-right: 5px;
+	margin-top: 2px;
+	color:black;
+	text-shadow:none;
+	text-align: center;
 }
 
+.gridster-item header {
+	cursor: -webkit-grab;
+	/*background-color: red;*/
+	height: 24px;
+	text-align: left;
+	padding-left: 9px;
+}
+
+.gridster-item header > a {
+	cursor: auto;
+	font-size: 20px;
+	font-family: HelveticaNeue-Light;
+	font-size: 18px;
+	color: #9F9F9F !important;
+	/* Spikey Reports: */
+	text-shadow: 1px 2px 1px rgba(0,0,0,0.32);
+	-webkit-transition: transform .1s ease-out;
+}
+
+.gridster-item header > a:hover {
+	-webkit-transform: scale(.9);
+}
+
+
 .close-icon:hover {
-	color: red;
+	/*color: red;*/
+}
+
+#containment-wrapper {
+	background: url(bg01.png);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;	
+}
+
+#gridster-wrapper {
+	margin-top: 80px;
+	width: 100%;
+	/*height: ;*/
+}
+
+.add-item {
+	position: fixed;
+	left: 100px;
+	top: 50px;
+}
+
+.editable-click {
+	border-bottom: none !important;
+	font-style: normal !important;
+}
+
+/* entire container, keeps perspective */
+body {
+	-webkit-perspective: 1500; /* Chrome, Safari, Opera */
+    -webkit-perspective-origin: 50% 50%; /* Chrome, Safari, Opera */
+}
+	/* flip the pane when hovered */
+	.gridster-item.flipped {
+		transform: rotateY(180deg);
+	}
+
+/* flip speed goes here */
+.gridster-item {
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.agridster-item{
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+.snapped {
+	background: red !important;
 }

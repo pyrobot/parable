@@ -6,22 +6,32 @@
 	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css" />
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 	<script src="bower_components/angular/angular.min.js"></script>
   	<script src="bower_components/javascript-detect-element-resize/jquery.resize.js"></script>
   	<script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
+  	<script src="bower_components/greensock/src/minified/TweenMax.min.js"></script>
+  	<script src="bower_components/greensock/src/minified/plugins/CSSPlugin.min.js"></script>
   	<link rel="stylesheet" href="app.css">
   	<link rel="stylesheet" href="bower_components/jquery-ui/themes/ui-darkness/jquery-ui.min.css">
   	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  	<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+	<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
   	<script src="app.js"></script>
 </head>
 <body ng-controller="pageCtrl">
-	<div gridster="gridsterOptions">
-        <ul id="containment-wrapper">
-            <li gridster-item="item" ng-repeat="item in standardItems">
-            	<i class="fa fa-trash-o close-icon" ng-click="removeItem(item)"></i>
+<div id="containment-wrapper">
+	<button class="add-item" ng-click="addItem()">Add</button>
+	<div gridster="gridsterOptions" id="gridster-wrapper">
+        <ul>
+            <li gridster-item="item" ng-class="{flipped: item.flipped}" ng-repeat="item in standardItems" ng-mousedown="addClass($event)" ng-mouseup="remClass($event)">
+            	<header><a href="#" editable-text="item.name">{{ item.name || "Widget" }}</a>
+            	<i class="fa fa-times close-icon" ng-click="removeItem(item, $event.target)"></i>
+              <i class="fa fa-gear close-icon" ng-click="item.flipped=!item.flipped"></i>
+            	</header>
             </li>
         </ul>
     </div>
+</div>
 </body>
 </html>
