@@ -14,6 +14,8 @@
   ],
   "dependencies": {
     "font-awesome": "~4.1.0",
-    "angular-gridster": "~0.9.16"
+    "greensock": "~1.13.1",
+    "angular-xeditable": "~0.1.8",
+    "angular-gridster": "pyrobot/angular-gridster#~0.9.18"
   }
 }
